@@ -46,8 +46,8 @@ module Liquid
   class For < Block
     Syntax = /\A(#{VariableSegment}+)\s+in\s+(#{QuotedFragment}+)\s*(reversed)?/o
 
-    attr_reader :collection_name
-    attr_reader :variable_name
+    attr_reader :collection_name, :variable_name, :limit, :from,
+      :for_block, :else_block
 
     def initialize(tag_name, markup, options)
       super
