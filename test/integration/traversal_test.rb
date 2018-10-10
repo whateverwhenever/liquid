@@ -8,7 +8,7 @@ class TraversalTest < Minitest::Test
   def traversal(template)
     Traversal
       .for(Template.parse(template).root)
-      .callback_for(VariableLookup, &:name)
+      .add_callback_for(VariableLookup, &:name)
       .traverse.flatten.compact
   end
 
