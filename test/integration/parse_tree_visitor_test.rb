@@ -2,14 +2,14 @@
 
 require 'test_helper'
 
-class TraversalTest < Minitest::Test
+class ParseTreeVisitorTest < Minitest::Test
   include Liquid
 
   def traversal(template)
-    Traversal
+    ParseTreeVisitor
       .for(Template.parse(template).root)
       .add_callback_for(VariableLookup, &:name)
-      .traverse.flatten.compact
+      .visit.flatten.compact
   end
 
   def test_variable
